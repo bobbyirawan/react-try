@@ -13,10 +13,46 @@
     <script type="text/babel">
       const container = document.getElementById('root');
       const root = ReactDOM.createRoot(container);
+
+      function Header({name}) {
+        return (
+            <h1>Try React Locally 🚀 {name ? name : "irawan"} </h1>
+            )
+      }
+
+      function Button1() {
+       const [likes, setLikes] = React.useState(0);
+
+        function handlerClick() {
+            setLikes(likes + 1);
+        }
+
+        return (
+            <button onClick={handlerClick}>like({likes})</button>
+        )
+      }
+
+      function HomePage() {
+        let names = ["bobby", "natasya", "pricillia", "irawan"]
+        return (
+            <>
+                <Header name="bobby" />
+                <ul>
+                  {
+                    names.map((value) => (
+                      <li key={value}>{value}</li>
+                    ))
+                  }
+                </ul>
+
+                <Button1 />
+            </>
+        )
+      }
+
       root.render(
         <>
-            <h1>Try React Locally 🚀</h1>
-            
+            <HomePage />
         </>
       );
     </script>
